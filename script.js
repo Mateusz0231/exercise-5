@@ -1,3 +1,4 @@
+
 (function () {
   const example = document.getElementById('example')
   const cw1 = document.getElementById('cw1')
@@ -15,8 +16,9 @@
   })
 
   cw1.addEventListener("click", function () {
+    answer.innerHTML ="Loading...";//5.2
    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
+      .then(response => response.json())//5.1
       .then(function (data) {
         appendData(data);
         function appendData(data){
@@ -32,11 +34,25 @@
   })
 
   cw2.addEventListener("click", function () {
-    //TODO implement it
+    answer.innerHTML ="Loading...";//5.3
+   fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(function (data) {
+        appendData(data);
+        function appendData(data){
+          answer.innerHTML ="";
+          
+            var div=document.createElement("div");
+            div.innerHTML=
+              '<strong>UserID:' + data[1].userID +'<strong><strong>id:' +data[1].id+'</strong><br><strong>title:</strong>' + data[1].title+'<br><strong>body:</strong>'+data[1].body+'<br><br>';
+            answer.appendChild(div);
+          }
+        
+       
   })
 
   cw3.addEventListener("click", function () {
     //TODO implement it
   })
 
-})})();
+})})})();
